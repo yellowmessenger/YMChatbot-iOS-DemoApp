@@ -29,7 +29,8 @@
 		919546BE25D67FD90042759F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		919546C025D67FD90042759F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		919546CC25D680720042759F /* YMChat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YMChat.framework; path = "../../Library/Developer/Xcode/DerivedData/YMChat-heihvsjsnnixeqetqmtpmpbluhjz/Build/Products/Debug-iphonesimulator/YMChat.framework"; sourceTree = "<group>"; };
-		91A321EB263AB32B008B4AF3 /* Podfile.lock */ = {isa = PBXFileReference; lastKnownFileType = file; path = Podfile.lock; sourceTree = SOURCE_ROOT; };
+		919920FD264933C300EFC8E2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		91A321EB263AB32B008B4AF3 /* Podfile.lock */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile.lock; sourceTree = SOURCE_ROOT; };
 		E347C1EF5C94694B9955576F /* Pods-YMChatDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YMChatDemo.release.xcconfig"; path = "Target Support Files/Pods-YMChatDemo/Pods-YMChatDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,6 +75,7 @@
 				919546BD25D67FD90042759F /* LaunchScreen.storyboard */,
 				919546C025D67FD90042759F /* Info.plist */,
 				91A321EB263AB32B008B4AF3 /* Podfile.lock */,
+				919920FD264933C300EFC8E2 /* README.md */,
 			);
 			path = YMChatDemo;
 			sourceTree = "<group>";
