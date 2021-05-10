@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import YMChat
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         return true
     }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        if let payload = userInfo["notificationIdentifier"] as? String {
+            let data = Data(payload.utf8)
+            if let jsonPayload = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String] {
+                YMChat.shared.config.payload = jsonPayload
+            }
+        }
+
+        completionHandler()
+    }
+
 
     // MARK: UISceneSession Lifecycle
 
@@ -34,3 +48,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+/* EXAMPLE PUSH NOTIFICATION PAYLOAD
+ {
+         "notification": {
+             "title": "Test from local 24",
+             "body": "test"
+         },
+         "data": {
+             "notificationIdentifier": "ORD123"
+         },
+         "apns": {
+             "headers": {
+                 "apns-collapse-id": "22525410718044744571092241829"
+             }
+         }
+     }
+ */

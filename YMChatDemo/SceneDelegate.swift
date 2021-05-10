@@ -6,16 +6,40 @@
 //
 
 import UIKit
+import YMChat
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    /* EXAMPLE PUSH NOTIFICATION PAYLOAD
+     {
+             "notification": {
+                 "title": "Test from local 24",
+                 "body": "test"
+             },
+             "data": {
+                 "notificationIdentifier": "ORD123"
+             },
+             "apns": {
+                 "headers": {
+                     "apns-collapse-id": "22525410718044744571092241829"
+                 }
+             }
+         }
+     */
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+
+        // Data can be passed in notification payload as seen above. The content of data can be then accessed here and pass furhter to the bot in the payload
+        let userInfo = connectionOptions.notificationResponse?.notification.request.content.userInfo
+        if let payload = userInfo?["notificationIdentifier"] as? String {
+            let data = Data(payload.utf8)
+            if let jsonPayload = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String] {
+                YMChat.shared.config.payload = jsonPayload
+            }
+        }
+
         guard let _ = (scene as? UIWindowScene) else { return }
     }
 
@@ -46,7 +70,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
 }
-
