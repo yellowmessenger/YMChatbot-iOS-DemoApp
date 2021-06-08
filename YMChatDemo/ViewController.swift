@@ -21,7 +21,11 @@ class ViewController: UIViewController, YMChatDelegate {
         YMChat.shared.config = config
 
         // Loads the chat window. Pass the current view controller as a parameter
-        YMChat.shared.startChatbot(on: self)
+        do {
+            try YMChat.shared.startChatbot()
+        } catch {
+            print("Error occured while loading chatbot \(error)")
+        }
 
         // Enable logging for debugging purpose
         YMChat.shared.enableLogging = true
@@ -31,6 +35,10 @@ class ViewController: UIViewController, YMChatDelegate {
 
     // MARK: - YMChatDelegate
     func onEventFromBot(response: YMBotEventResponse) {
-        print("Even from a bot has been received", response)
+        print("Even from a bot has been received", response.data)
+    }
+
+    func onBotClose() {
+        print("Bot closed")
     }
 }
