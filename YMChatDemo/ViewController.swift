@@ -26,10 +26,12 @@ class ViewController: UIViewController, YMChatDelegate {
 
     func presentBot(authToken: String) {
         let config = YMConfig(botId: "x1609740331340")
-        config.statusBarColor = UIColor.red
 
-        config.enableHistory = true
+        config.deviceToken = authToken
+
         config.payload = ["name": "xyz"]
+
+        config.statusBarColor = UIColor.red
 
         // WARNING: config should be set before invoking startChatBot() method
         YMChat.shared.config = config
@@ -46,7 +48,7 @@ class ViewController: UIViewController, YMChatDelegate {
 
     // MARK: - YMChatDelegate
     func onEventFromBot(response: YMBotEventResponse) {
-        print("Even from a bot has been received", response.data)
+        print("Even from a bot has been received", response)
     }
 
     func onBotClose() {
