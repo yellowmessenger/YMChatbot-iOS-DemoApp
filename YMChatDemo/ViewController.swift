@@ -18,16 +18,16 @@ class ViewController: UIViewController, YMChatDelegate {
             print("########## Error fetching FCM registration token: \(error)")
           } else if let token = token {
             print("########## FCM registration token: \(token)")
-            self.presentBot(authToken: token)
+            self.presentBot(fcmToken: token)
           }
         }
 
     }
 
-    func presentBot(authToken: String) {
+    func presentBot(fcmToken: String) {
         let config = YMConfig(botId: "x1609740331340")
 
-        config.deviceToken = authToken
+        config.deviceToken = fcmToken
 
         config.payload = ["name": "xyz"]
 
