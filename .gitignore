@@ -35,3 +35,4 @@ Podfile.lock
 # Carthage
 Cartfile.resolved
 Carthage/*
+YMChatDemo/GoogleService-Info.plist

@@ -20,6 +20,8 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>To upload documents</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Microphone description</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
@@ -66,5 +68,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>remote-notification</string>
+    </array>
+
 </dict>
 </plist>

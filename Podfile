@@ -7,5 +7,9 @@ target 'YMChatDemo' do
 
   pod 'YMChat', '~> 1.2'
 #  pod 'YMChat', :path => '../sdk'
-  
+
+  # Add following Firebase pods if you need push notifications support
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Messaging'
+
 end

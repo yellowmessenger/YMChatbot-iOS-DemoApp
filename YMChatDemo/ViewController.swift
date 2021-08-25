@@ -7,15 +7,29 @@
 
 import UIKit
 import YMChat // Note this
+import Firebase
+import FirebaseMessaging
 
 class ViewController: UIViewController, YMChatDelegate {
 
     @IBAction func presentYM(_ sender: Any) {
+        Messaging.messaging().token { token, error in
+          if let error = error {
+            print("########## Error fetching FCM registration token: \(error)")
+          } else if let token = token {
+            print("########## FCM registration token: \(token)")
+            self.presentBot(authToken: token)
+          }
+        }
+
+    }
+
+    func presentBot(authToken: String) {
         let config = YMConfig(botId: "x1609740331340")
-        config.statusBarColor = UIColor(red: 81 / 255, green: 133 / 255, blue: 237 / 255, alpha: 1)
+        config.statusBarColor = UIColor.red
 
         config.enableHistory = true
-        config.payload = ["UserState": "Anonymous"]
+        config.payload = ["name": "xyz"]
 
         // WARNING: config should be set before invoking startChatBot() method
         YMChat.shared.config = config
@@ -26,9 +40,6 @@ class ViewController: UIViewController, YMChatDelegate {
         } catch {
             print("Error occured while loading chatbot \(error)")
         }
-
-        // Enable logging for debugging purpose
-        YMChat.shared.enableLogging = true
 
         YMChat.shared.delegate = self
     }

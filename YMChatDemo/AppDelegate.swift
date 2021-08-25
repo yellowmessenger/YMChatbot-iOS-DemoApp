@@ -7,24 +7,32 @@
 
 import UIKit
 import YMChat
+import Firebase
+import FirebaseMessaging
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
+        UNUserNotificationCenter.current().delegate = self
+        Messaging.messaging().delegate = self
+
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: { granted, _ in
+            print("Notification permission Granted \(granted)")
+        })
+        application.registerForRemoteNotifications()
+
         return true
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
-        if let payload = userInfo["notificationIdentifier"] as? String {
-            let data = Data(payload.utf8)
-            if let jsonPayload = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String] {
-                YMChat.shared.config.payload = jsonPayload
-            }
+        if let botId = userInfo["botId"] as? String {
+            print("Received notification for bot id \(botId)")
         }
 
         completionHandler()
@@ -45,22 +53,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print(userInfo)
+        completionHandler(UIBackgroundFetchResult.newData)
+    }
 
+    //MARK: - Firebase messaging delegate methods
+
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        print("############ Firebase registration token: \(String(describing: fcmToken))")
+    }
 }
-
-/* EXAMPLE PUSH NOTIFICATION PAYLOAD
- {
-         "notification": {
-             "title": "Test from local 24",
-             "body": "test"
-         },
-         "data": {
-             "notificationIdentifier": "ORD123"
-         },
-         "apns": {
-             "headers": {
-                 "apns-collapse-id": "22525410718044744571092241829"
-             }
-         }
-     }
- */
