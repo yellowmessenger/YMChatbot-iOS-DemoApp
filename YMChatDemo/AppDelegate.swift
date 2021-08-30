@@ -31,9 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
-        if let botId = userInfo["botId"] as? String {
-            print("Received notification for bot id \(botId)")
-        }
+        showNotificationTestAlert(userInfo: userInfo)
 
         completionHandler()
     }
@@ -54,13 +52,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        print(userInfo)
+        // Push notification come here when the host app is in foreground and chotbot is not open
+        showNotificationTestAlert(userInfo: userInfo)
         completionHandler(UIBackgroundFetchResult.newData)
+    }
+
+    private func showNotificationTestAlert(userInfo: [AnyHashable: Any]) {
+        let botId = userInfo["botId"] as! String
+        let aps = userInfo["aps"] as! [AnyHashable: Any]
+        let alert = aps["alert"] as! [AnyHashable: Any]
+        let body = alert["body"] as! String
+        if let vc = UIApplication.shared.windows.first(where: {$0.isKeyWindow})?.rootViewController {
+            vc.showInfoAlert(#"Notification: "\#(body)" for bot id: \#(botId)"#)
+        }
     }
 
     //MARK: - Firebase messaging delegate methods
 
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         print("############ Firebase registration token: \(String(describing: fcmToken))")
+    }
+    
+}
+
+extension UIViewController {
+    func showInfoAlert(_ message: String) {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+
+        present(alert, animated: true, completion: nil)
     }
 }
