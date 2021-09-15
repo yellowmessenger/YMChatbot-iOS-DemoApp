@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		914FC87626F1BAD9002D78D3 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914FC87526F1BAD9002D78D3 /* Helper.swift */; };
 		919546B325D67FD60042759F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919546B225D67FD60042759F /* AppDelegate.swift */; };
 		919546B525D67FD60042759F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919546B425D67FD60042759F /* SceneDelegate.swift */; };
 		919546B725D67FD60042759F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919546B625D67FD60042759F /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		04F2A48033BCB145B815EA0E /* Pods-YMChatDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YMChatDemo.debug.xcconfig"; path = "Target Support Files/Pods-YMChatDemo/Pods-YMChatDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		575D019726363273131DA812 /* Pods_YMChatDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YMChatDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		914FC87526F1BAD9002D78D3 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		919546AF25D67FD60042759F /* YMChatDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YMChatDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		919546B225D67FD60042759F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		919546B425D67FD60042759F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				919546B225D67FD60042759F /* AppDelegate.swift */,
 				919546B425D67FD60042759F /* SceneDelegate.swift */,
 				919546B625D67FD60042759F /* ViewController.swift */,
+				914FC87526F1BAD9002D78D3 /* Helper.swift */,
 				919546B825D67FD60042759F /* Main.storyboard */,
 				919546BB25D67FD90042759F /* Assets.xcassets */,
 				919546BD25D67FD90042759F /* LaunchScreen.storyboard */,
@@ -218,6 +221,7 @@
 				919546B725D67FD60042759F /* ViewController.swift in Sources */,
 				919546B325D67FD60042759F /* AppDelegate.swift in Sources */,
 				919546B525D67FD60042759F /* SceneDelegate.swift in Sources */,
+				914FC87626F1BAD9002D78D3 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
