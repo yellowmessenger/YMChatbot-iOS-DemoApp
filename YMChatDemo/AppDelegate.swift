@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         // NOTE: UNCOMMENT FOLLOWING LINE TO ENABLE FIREBASE PUSH NOTIFICATIONS
-         ymNotificationSetup(application)
+//         ymNotificationSetup(application)
 
         return true
     }
