@@ -49,16 +49,17 @@ class ViewController: UIViewController, YMChatDelegate {
 
     @IBAction func unlinkDeviceToken(_ sender: Any) {
         Messaging.messaging().token { token, error in
-          if let error = error {
-            print("########## Error fetching FCM registration token: \(error)")
-          } else if let token = token {
-              let apiKey: String = "" // Add apiKey from your account
-              YMChat.shared.unlinkDeviceToken(botId: self.botID, apiKey: apiKey, deviceToken: token) {
-                print("Token removed successfully")
-            } failure: { errorString in
-                print("ERROR: \(errorString)")
+            if let error = error {
+                print("########## Error fetching FCM registration token: \(error)")
+            } else if let token = token {
+                //Get api key from Account setting section of app.yellow.ai or My Profile Section of cloud.yellow.ai
+                let apiKey: String = ""
+                YMChat.shared.unlinkDeviceToken(botId: self.botID, apiKey: apiKey, deviceToken: token) {
+                    print("Token removed successfully")
+                } failure: { errorString in
+                    print("ERROR: \(errorString)")
+                }
             }
-          }
         }
     }
 
