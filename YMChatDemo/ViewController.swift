@@ -11,6 +11,7 @@ import Firebase
 import FirebaseMessaging
 
 class ViewController: UIViewController, YMChatDelegate {
+    let botID: String = <#botid#>
 
     @IBAction func presentYM(_ sender: Any) {
         Messaging.messaging().token { token, error in
@@ -25,13 +26,13 @@ class ViewController: UIViewController, YMChatDelegate {
     }
 
     func presentBot(fcmToken: String) {
-        let config = YMConfig(botId: "x1609740331340")
+        let config = YMConfig(botId: botID)
 
-        config.deviceToken = fcmToken
-
-        config.payload = ["name": "xyz"]
-
-        config.statusBarColor = UIColor.red
+        // UNCOMMENT FOLLOWING CODE AS REQUIRED
+//        config.deviceToken = fcmToken
+//        config.payload = ["name": "xyz"]
+//        config.closeButtonColor = UIColor.white
+//        config.statusBarColor = UIColor.red
 
         // WARNING: config should be set before invoking startChatBot() method
         YMChat.shared.config = config
@@ -46,9 +47,25 @@ class ViewController: UIViewController, YMChatDelegate {
         YMChat.shared.delegate = self
     }
 
+    @IBAction func unlinkDeviceToken(_ sender: Any) {
+        Messaging.messaging().token { token, error in
+          if let error = error {
+            print("########## Error fetching FCM registration token: \(error)")
+          } else if let token = token {
+              let apiKey: String = "" // Add apiKey from your account
+              YMChat.shared.unlinkDeviceToken(botId: self.botID, apiKey: apiKey, deviceToken: token) {
+                print("Token removed successfully")
+            } failure: { errorString in
+                print("ERROR: \(errorString)")
+            }
+          }
+        }
+    }
+
+
     // MARK: - YMChatDelegate
     func onEventFromBot(response: YMBotEventResponse) {
-        print("Even from a bot has been received", response)
+        print("Event from a bot has been received", response)
     }
 
     func onBotClose() {

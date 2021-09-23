@@ -5,7 +5,8 @@ target 'YMChatDemo' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'YMChat', '~> 1.3'
+  pod 'YMChat', '~> 1.4'
+
 #  pod 'YMChat', :path => '../sdk'
 
   # Add following Firebase pods if you need push notifications support

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,27 +17,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OjJ-QW-Wg1">
-                                <rect key="frame" x="156.5" y="433" width="101" height="30"/>
-                                <state key="normal" title="Show Chat bot"/>
-                                <connections>
-                                    <action selector="presentYM:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rHA-Dz-paj"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tg2-hi-WFN">
+                                <rect key="frame" x="126" y="414" width="162" height="68"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OjJ-QW-Wg1">
+                                        <rect key="frame" x="0.0" y="0.0" width="162" height="30"/>
+                                        <state key="normal" title="💬 Show Chat bot"/>
+                                        <connections>
+                                            <action selector="presentYM:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rHA-Dz-paj"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSY-9T-YsM">
+                                        <rect key="frame" x="0.0" y="38" width="162" height="30"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="🔕 Unlink device Token"/>
+                                        <connections>
+                                            <action selector="unlinkDeviceToken:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qqH-tV-Ao5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="OjJ-QW-Wg1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1Zg-oy-ft8"/>
-                            <constraint firstItem="OjJ-QW-Wg1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="baB-bA-SHv"/>
+                            <constraint firstItem="tg2-hi-WFN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BFq-HG-Ywc"/>
+                            <constraint firstItem="tg2-hi-WFN" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="QZ7-Pq-7Ff"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Sdz-ek-Dih">
-                        <barButtonItem key="rightBarButtonItem" title="PUSH YM" id="DZO-rU-Vmj">
-                            <connections>
-                                <action selector="pushYM:" destination="BYZ-38-t0r" id="9lR-dd-gpl"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="PUSH YM" id="DZO-rU-Vmj"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
