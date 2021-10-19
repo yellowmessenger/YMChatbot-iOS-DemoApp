@@ -29,7 +29,7 @@ class ViewController: UIViewController, YMChatDelegate {
         let config = YMConfig(botId: botID)
 
         //To enable V2 bot set version = 2
-        config.version = 2
+//        config.version = 2
 
             // Set fcm device token for push notifications
             //config.deviceToken = fcmToken
