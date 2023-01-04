@@ -5,7 +5,7 @@ target 'YMChatDemo' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'YMChat', '~> 1.5'
+  pod 'YMChat', '~> 1.9'
 
 #   pod 'YMChat', :path => '../sdk'
 

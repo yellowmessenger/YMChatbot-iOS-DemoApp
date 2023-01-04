@@ -10,8 +10,8 @@ import YMChat // Note this
 import Firebase
 import FirebaseMessaging
 
+let botID: String = <#botid#>
 class ViewController: UIViewController, YMChatDelegate {
-    let botID: String = <#botid#>
 
     @IBAction func presentYM(_ sender: Any) {
         Messaging.messaging().token { token, error in
@@ -62,7 +62,7 @@ class ViewController: UIViewController, YMChatDelegate {
             } else if let token = token {
                 //Get api key from Account setting section of app.yellow.ai or My Profile Section of cloud.yellow.ai
                 let apiKey: String = ""
-                YMChat.shared.unlinkDeviceToken(botId: self.botID, apiKey: apiKey, deviceToken: token) {
+                YMChat.shared.unlinkDeviceToken(botId: botID, apiKey: apiKey, deviceToken: token) {
                     print("Token removed successfully")
                 } failure: { errorString in
                     print("ERROR: \(errorString)")
