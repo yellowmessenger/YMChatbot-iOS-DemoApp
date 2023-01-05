@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="13j-jc-fvb">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tg2-hi-WFN">
-                                <rect key="frame" x="126" y="414" width="162" height="68"/>
+                                <rect key="frame" x="126" y="395" width="162" height="106"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OjJ-QW-Wg1">
                                         <rect key="frame" x="0.0" y="0.0" width="162" height="30"/>
@@ -27,8 +27,15 @@
                                             <action selector="presentYM:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rHA-Dz-paj"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSY-9T-YsM">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OK5-Gh-1x2">
                                         <rect key="frame" x="0.0" y="38" width="162" height="30"/>
+                                        <state key="normal" title="✅ Preload View"/>
+                                        <connections>
+                                            <segue destination="p0o-10-9NG" kind="show" id="VfK-Af-JWJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSY-9T-YsM">
+                                        <rect key="frame" x="0.0" y="76" width="162" height="30"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="🔕 Unlink device Token"/>
                                         <connections>
@@ -45,16 +52,67 @@
                             <constraint firstItem="tg2-hi-WFN" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="QZ7-Pq-7Ff"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Sdz-ek-Dih">
-                        <barButtonItem key="rightBarButtonItem" title="PUSH YM" id="DZO-rU-Vmj"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Sdz-ek-Dih"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1839.1304347826087" y="87.723214285714278"/>
+        </scene>
+        <!--Preload View Controller-->
+        <scene sceneID="Hig-12-DFl">
+            <objects>
+                <viewController id="p0o-10-9NG" customClass="PreloadViewController" customModule="YMChatDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1yT-cZ-Cpq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIh-KX-lzP">
+                                <rect key="frame" x="324" y="772" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="FgE-xr-6CK"/>
+                                    <constraint firstAttribute="height" constant="50" id="NTt-TP-bfK"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="chatbot"/>
+                                <connections>
+                                    <action selector="presentChatbot:" destination="p0o-10-9NG" eventType="touchUpInside" id="62P-3d-7Gs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Sp4-71-J7o"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="qIh-KX-lzP" secondAttribute="trailing" constant="40" id="6hC-H2-NfV"/>
+                            <constraint firstItem="Sp4-71-J7o" firstAttribute="bottom" secondItem="qIh-KX-lzP" secondAttribute="bottom" constant="40" id="Kh7-zZ-R7L"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="9cJ-8w-Ud3"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OP4-YK-ft9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2686.9565217391305" y="87.723214285714278"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fW0-V8-AbR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="13j-jc-fvb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0k9-hv-hfd">
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="KaX-te-hKm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="43W-Kp-GMJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="87.723214285714278"/>
         </scene>
     </scenes>
     <resources>
+        <image name="chatbot" width="512" height="512"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
